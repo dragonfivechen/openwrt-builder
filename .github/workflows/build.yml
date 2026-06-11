@@ -57,6 +57,11 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
+      - name: 展开配置
+        run: |
+          cd openwrt
+          make defconfig
+
       - name: SSH 连接（可选）
         if: ${{ github.event.inputs.ssh_connect == 'true' }}
         uses: mxschmitt/action-tmate@v3
